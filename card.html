@@ -23,12 +23,46 @@
 
 
 <div class="card">
-  <img src="tree.jpg" alt="MANOJ" style="width:100%">
+  <img id="userImage" src="tree.jpg" alt="MANOJ" style="width:100%">
   <div class="container">
-    <h4><b>TREE</b></h4> 
-    
+    <h4 id="userTitle"><b>TREE</b></h4> 
+    <h5 id="userDesignation"><b>lol</b></h5> 
   </div>
 </div>
+<button onclick="toggleUser()">click</button>
 </center>
+<script>
+  const userOne = {
+    name : "manoj",
+    designation : "bekaar",
+    image: "/public/images/manoj.jpg"
+  }
+  const userTwo = {
+    name : "manojsambari",
+    designation : "bikarr",
+    image: "/public/images/tree.jpg"
+  }
+let currentIsJohn=true;
+let displayUser = {};
+let userTitle = document.getElementById("userTitle");
+let userImage = document.getElementById("userImage");
+let userDesignation = document.getElementById("userDesignation");
+let toggleUser = function(){
+if(currentIsJohn){
+  displayUser=userTwo;
+  currentIsJohn=false;
+}
+else{
+  displayUser=userOne;
+  currentIsJohn=true;
+}
+
+userTitle.innerHTML = currentUser.userTitle;
+userDesignation.innerHTML = currentUser.designation;
+userImage.innerHTML = currentUser.image;
+}
+
+
+</script>
 </body>
 </html> 
