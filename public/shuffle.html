@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>   
+    <style>
+      .MM{
+        background-color: yellow;
+      }
+        .card
+        {
+            border-radius: 32px;
+            border: 1px solid rgba(29, 246, 0, 0.962);
+            justify-content: center;
+            background-color: rgb(99, 214, 99);
+            width: 360px;
+            padding: 10px;
+            margin: 50px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .card-img
+        {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .flexbox
+        {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card:hover
+        {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        .container > p, h4
+        {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color : royalblue;
+            display: inline;
+        }
+    </style>
+</head>
+<body class="MM">
+    <div class="flexbox">
+        <div class="card">
+            <img id="userImage" src="images/plant.jpg" class="card-img" alt="Profile pic" style="width:100%">
+            <div class="container">
+              <h4 id="userTitle"><b>Plant</b></h4>
+              <p id = "userDesignation">Student</p>
+            </div><center>
+            <button onclick="toggleUser()">Toggle</button></center>
+        </div>
+    </div>
+    <script>
+        const userOne = {
+            name : "Plant",
+            designation : "hehe",
+            image : "images/plant.jpg",
+        }
+        const userTwo = {
+            name : "TREE",
+            designation : "lol",
+            image : "images/tree.jpg",
+        }
+
+        let currentIsone = true;
+        let currentUser = userOne;
+
+        let userTitle = document.getElementById("userTitle");
+        let userImage = document.getElementById("userImage");
+        let userDesignation = document.getElementById("userDesignation");
+
+
+        let toggleUser = function() {
+            if(currentIsone){
+                currentUser = userTwo;
+                currentIsone = false;
+            }
+            else{
+                currentUser = userOne;
+                currentIsone = true;
+            }
+
+            userTitle.innerHTML = currentUser.name;
+            userDesignation.innerHTML = currentUser.designation;
+            userImage.src = currentUser.image;
+        }
+
+    </script>
+</body>
+</html>
