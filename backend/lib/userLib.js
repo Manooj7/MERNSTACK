@@ -21,7 +21,7 @@ module.exports.createFirstUser = async function(callback){
 
         var result = await newUser.save();
 
-    callback(null,users);
+    callback(null,user);
     }
     catch(err){
     callback(err,null);
@@ -52,7 +52,7 @@ module.exports.updateUser = async function(userName,data,callback){
         callback(null,result);
         }
         catch(err){
-        callback(err,null);
+        
         }
         }
 module.exports.deleteUser = async function(userName,callback){
@@ -73,7 +73,7 @@ module.exports.deleteUser = async function(userName,callback){
 module.exports.getUserByFilter = async function(filter,callback){
                 try{
                  //  var user = await userModel.findOne(filter);
-                    var result= await userModel.findOne(query);
+                    var result= await userModel.findOne(filter);
             
                 callback(null,result);
                 }

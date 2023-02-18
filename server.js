@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING,{},function(err){
 				console.log(result);
 			}
 		})
-		// //TODO: Donot Create a user if atleast 1 user exist in the table
+		//TODO: Donot Create a user if atleast 1 user exist in the table
 		// userLib.createFirstUser(function(err,result){
 		// 	if(err){
 		// 		console.error(err);
@@ -51,14 +51,14 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING,{},function(err){
 		//  		console.log(result);
 		// 	}
 		// });
-		// userLib.updateUser(function(err,result){
-		// 	if(err){
-		// 		console.error(err);
-		// 	}
-		// 	else{
-		// 		console.log(result);
-		// 	}
-		// });
+		userLib.updateUser("Manoj Sambari","2020",function(err,result){
+			if(err){
+				console.error(err);
+			}
+			else{
+				console.log(result);
+			}
+		});
 		// userLib.deleteUser("Manoj Sambari",function(err,result){
 		// 	if(err){
 		// 		console.error(err);
