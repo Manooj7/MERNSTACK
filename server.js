@@ -25,7 +25,26 @@ app.get("/api/todos", function(req, res){
 		}
 	});
 });
-
+app.get("/api/todosc", function(req, res){
+	todoLib.getAllCompletedTodos(function(err,todos){
+		if(err){
+			res.json({status:"error",message:err,data:null});
+		}
+		else{
+			res.json({status:"success",data:todos});
+		}
+	});
+});
+app.get("/api/todosd", function(req, res){
+	todoLib.getAllDeletedTodos(function(err,todos){
+		if(err){
+			res.json({status:"error",message:err,data:null});
+		}
+		else{
+			res.json({status:"success",data:todos});
+		}
+	});
+});
 app.post("/api/todos",function(req,res){
 	const todo=req.body;
 	todoLib.createTodo(todo,function(err,dbtodo){
@@ -37,25 +56,31 @@ app.post("/api/todos",function(req,res){
 		}
 	})
 })
-app.put("/api/todos/:todoid",function(req,res){
-	const todo=req.body;
-	const todoid=req.params.todoid;
-
-	todoLib.updateTodoById(todoid,todo,function(err,dbtodo){
+// update by id 
+app.put(("/api/todos/:todoid"),function(req,res){
+	const todo = req.body;
+	const todoid = req.params.todoid;
+	todoLib.updateTodoById(todoid, todo, function(err, dbtodo){
 		if(err){
-			res.json({status:"error",message:err,data:null});
+			res.json({status: "error", message: err, data: null});
 		}
 		else{
-			res.json({status:"success",data:dbtodo});
+			res.json({status: "success", data: dbtodo});
 		}
 	});
-})
-app.delete("/api/todos/id",function(req,res){
-	const todoid=req.params.todoid;
-	todoLib.deleteTodoById(todoid,function(err,dbtodo){
+});
 
-	})
-})   
+app.delete(("/api/todos/:todoid"),function(req,res){
+	const todoid = req.params.todoid;
+	todoLib.deleteTodoById(todoid, function(err,dbtodo){
+		if(err){
+			res.json({status: "error", message: err, data: null});
+		}
+		else{
+			res.json({status: "success", data: dbtodo});
+		}
+	});
+});
 app.get("/resume", function(req, res){
 	res.sendFile(__dirname+"/Resume.html");
 });
